@@ -1,0 +1,15 @@
+- name: Upgrade Arch to latest version
+  hosts: all
+  tasks:
+    - name: Update arch to latest version
+      pacman:
+        update_cache: yes
+        upgrade: yes
+      when: inventory_hostname in groups['archlinux']
+    - name: Install needed packages
+      pacman:
+        name:
+          - htop
+          - podman
+        state: present
+      when: inventory_hostname in groups['archlinux']

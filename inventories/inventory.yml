@@ -1,6 +1,7 @@
+arch:
 all:
   children:
-    servers:
+    archlinux:
       hosts:
         utils:
           ansible_host: 172.30.55.22
@@ -8,7 +9,10 @@ all:
         media:
           ansible_host: 172.30.55.24
           ansible_user: root
-    networking:
+        trading:
+          ansible_host: 172.30.55.25
+          ansible_user: root
+    opnsense:
       hosts:
         router:
           ansible_host: 172.30.55.1
