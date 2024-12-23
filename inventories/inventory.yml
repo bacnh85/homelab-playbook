@@ -1,0 +1,15 @@
+all:
+  children:
+    servers:
+      hosts:
+        utils:
+          ansible_host: 172.30.55.22
+          ansible_user: root
+        media:
+          ansible_host: 172.30.55.24
+          ansible_user: root
+    networking:
+      hosts:
+        router:
+          ansible_host: 172.30.55.1
+          ansible_user: root

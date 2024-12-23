@@ -1,0 +1,7 @@
+- name: Upgrade Arch to latest version
+  hosts: servers
+  tasks:
+    - name: Update all packages
+      pacman:
+        update_cache: yes
+        upgrade: yes
