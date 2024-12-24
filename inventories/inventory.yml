@@ -17,3 +17,11 @@ all:
         router:
           ansible_host: 172.30.55.1
           ansible_user: root
+    pve:
+      hosts:
+        r720:
+          ansible_host: 172.30.55.11
+          ansible_user: root
+        r620:
+          ansible_host: 172.30.55.13
+          ansible_user: root
