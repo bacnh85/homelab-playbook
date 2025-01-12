@@ -12,6 +12,9 @@ all:
         trading:
           ansible_host: 172.30.55.25
           ansible_user: root
+        cloud:
+          ansible_host: 172.30.55.26
+          ansible_user: root
     opnsense:
       hosts:
         router:
