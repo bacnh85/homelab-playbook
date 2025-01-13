@@ -1,0 +1,19 @@
+[Unit]
+Description=Immich Service Container
+After=immich_postgres.service immich_redis.service
+
+[Container]
+Image=ghcr.io/immich-app/immich-server:release
+AutoUpdate=registry
+ContainerName=immich_server
+Pod=immich.pod
+EnvironmentFile=./immich.env
+Volume=/mnt/immich/library:/usr/src/app/upload
+Volume=/etc/localtime:/etc/localtime:ro
+
+[Service]
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target default.target

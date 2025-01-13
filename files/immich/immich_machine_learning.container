@@ -1,0 +1,16 @@
+[Unit]
+Description=Immich Machine Learning Container
+
+[Container]
+Image=ghcr.io/immich-app/immich-machine-learning:release
+AutoUpdate=registry
+ContainerName=immich_machine_learning
+Pod=immich.pod
+Volume=immich_model_cache.volume:/cache
+
+[Service]
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target default.target
