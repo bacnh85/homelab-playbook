@@ -2,7 +2,7 @@
 Description=Immich Machine Learning Container
 
 [Container]
-Image=ghcr.io/immich-app/immich-machine-learning:release
+Image=ghcr.io/immich-app/immich-machine-learning:release-cuda
 AutoUpdate=registry
 ContainerName=immich_machine_learning
 Pod=immich.pod
