@@ -11,6 +11,12 @@ EnvironmentFile=./immich.env
 Volume=/mnt/immich/library:/usr/src/app/upload
 Volume=/etc/localtime:/etc/localtime:ro
 
+# For GPU transcode
+# More info: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/cdi-support.html
+# Run this cmd: nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+SecurityLabelDisable=true
+AddDevice=nvidia.com/gpu=all
+
 [Service]
 Restart=on-failure
 RestartSec=10s
