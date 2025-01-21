@@ -11,12 +11,6 @@
           - nvidia-container-toolkit
         state: present
 
-    # ref: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/cdi-support.html
-    - name: Generate the CDI specification file
-      ansible.builtin.command:
-        cmd: nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
-        creates: /etc/cdi/nvidia.yaml
-
     - name: Create the Quadlet directory
       ansible.builtin.file:
         path: "{{ item }}"

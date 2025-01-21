@@ -3,12 +3,12 @@ Description=Nextcloud Web Container
 After=nextcloud_app.service
 
 [Container]
-Image=docker.io/nginx:alpine
+Image=docker.io/caddy:latest
 AutoUpdate=registry
 ContainerName=nextcloud_web
 Pod=nextcloud.pod
-Volume=./nextcloud_nginx.conf:/etc/nginx/nginx.conf:ro
-Volume=nextcloud_data.volume:/var/www/html:z,ro
+Volume=./nextcloud_caddy.conf:/etc/caddy/Caddyfile:ro
+Volume=nextcloud_data.volume:/var/www/html:ro,z
 
 [Service]
 Restart=on-failure

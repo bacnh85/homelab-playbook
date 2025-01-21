@@ -1,5 +1,5 @@
 [Unit]
-Description=Nextcloud Database Container
+Description=Nextcloud Application Container
 After=nextcloud_db.service nextcloud_redis.service
 
 [Container]
@@ -21,6 +21,7 @@ Environment=REDIS_HOST=127.0.0.1
 Environment=NEXTCLOUD_ADMIN_USER=bacnh
 Environment=NEXTCLOUD_ADMIN_PASSWORD=QUaSU8ZXFx2AzrkW
 Environment=NEXTCLOUD_TRUSTED_DOMAINS="cloud.mfk.vn cloud.bacnh.com cloud.eesmart.vn 172.30.55.26"
+Environment=OVERWRITEPROTOCOL=https
 
 Volume=nextcloud_data.volume:/var/www/html:z
 

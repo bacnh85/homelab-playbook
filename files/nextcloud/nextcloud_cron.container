@@ -1,0 +1,18 @@
+[Unit]
+Description=Nextcloud Cron Container
+After=nextcloud_db.service nextcloud_redis.service
+
+[Container]
+Image=docker.io/nextcloud:fpm-alpine
+AutoUpdate=registry
+ContainerName=nextcloud_cron
+Pod=nextcloud.pod
+Volume=nextcloud_data.volume:/var/www/html:z
+Entrypoint=/cron.sh
+
+[Service]
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target default.target
