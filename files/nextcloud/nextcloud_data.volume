@@ -1,0 +1,5 @@
+[Unit]
+Description=nextcloud database volume
+
+[Volume]
+Label=app=nextcloud

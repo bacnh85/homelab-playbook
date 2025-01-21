@@ -1,0 +1,32 @@
+[Unit]
+Description=Nextcloud Database Container
+After=nextcloud_db.service nextcloud_redis.service
+
+[Container]
+Image=docker.io/nextcloud:fpm-alpine
+AutoUpdate=registry
+ContainerName=nextcloud_app
+Pod=nextcloud.pod
+
+# DB connection
+Environment=MYSQL_USER=nextcloud
+Environment=MYSQL_PASSWORD=sJue9rv199z^My
+Environment=MYSQL_DATABASE=nextcloud
+Environment=MYSQL_HOST=127.0.0.1
+
+# Redis connection
+Environment=REDIS_HOST=127.0.0.1
+
+# Admin user and password
+Environment=NEXTCLOUD_ADMIN_USER=bacnh
+Environment=NEXTCLOUD_ADMIN_PASSWORD=QUaSU8ZXFx2AzrkW
+Environment=NEXTCLOUD_TRUSTED_DOMAINS="cloud.mfk.vn cloud.bacnh.com cloud.eesmart.vn 172.30.55.26"
+
+Volume=nextcloud_data.volume:/var/www/html:z
+
+[Service]
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target default.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=Nextcloud Web Container
+After=nextcloud_app.service
+
+[Container]
+Image=docker.io/nginx:alpine
+AutoUpdate=registry
+ContainerName=nextcloud_web
+Pod=nextcloud.pod
+Volume=./nextcloud_nginx.conf:/etc/nginx/nginx.conf:ro
+Volume=nextcloud_data.volume:/var/www/html:z,ro
+
+[Service]
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target default.target
