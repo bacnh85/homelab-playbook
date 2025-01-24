@@ -11,6 +11,12 @@
           - nvidia-container-toolkit
         state: present
 
+    # ref: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/cdi-support.html
+    - name: Generate the CDI specification file
+      ansible.builtin.command:
+        cmd: nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+        creates: /etc/cdi/nvidia.yaml
+
     - name: Create the Quadlet directory
       ansible.builtin.file:
         path: "{{ item }}"
@@ -24,7 +30,7 @@
 
     - name: Copy the Quadlet files
       ansible.builtin.copy:
-        src: "../files/nextcloud/"
+        src: "files/"
         dest: /etc/containers/systemd
         owner: root
         group: root
@@ -34,8 +40,8 @@
       ansible.builtin.systemd:
         daemon_reload: true
 
-    - name: Ensure nextcloud pod is started and enabled
+    - name: Ensure immich pod is started and enabled
       ansible.builtin.systemd:
-        name: nextcloud-pod
+        name: immich-pod
         state: started
         enabled: true
