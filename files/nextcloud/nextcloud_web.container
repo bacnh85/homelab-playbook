@@ -8,7 +8,9 @@ AutoUpdate=registry
 ContainerName=nextcloud_web
 Pod=nextcloud.pod
 Volume=./nextcloud_caddy.conf:/etc/caddy/Caddyfile:ro
-Volume=nextcloud_data.volume:/var/www/html:ro,z
+#Volume=nextcloud_data.volume:/var/www/html:ro,z
+Volume=/mnt/nextcloud/data:/var/www/html:ro,z
+
 
 [Service]
 Restart=on-failure

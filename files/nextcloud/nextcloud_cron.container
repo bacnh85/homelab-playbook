@@ -7,7 +7,8 @@ Image=docker.io/nextcloud:fpm-alpine
 AutoUpdate=registry
 ContainerName=nextcloud_cron
 Pod=nextcloud.pod
-Volume=nextcloud_data.volume:/var/www/html:z
+#Volume=nextcloud_data.volume:/var/www/html:z
+Volume=/mnt/nextcloud/data:/var/www/html:z
 Entrypoint=/cron.sh
 
 [Service]

@@ -23,7 +23,8 @@ Environment=NEXTCLOUD_ADMIN_PASSWORD=QUaSU8ZXFx2AzrkW
 Environment=NEXTCLOUD_TRUSTED_DOMAINS="cloud.mfk.vn cloud.bacnh.com cloud.eesmart.vn 172.30.55.26"
 Environment=OVERWRITEPROTOCOL=https
 
-Volume=nextcloud_data.volume:/var/www/html:z
+# Volume=nextcloud_data.volume:/var/www/html:z
+Volume=/mnt/nextcloud/data:/var/www/html:z
 
 [Service]
 Restart=on-failure
