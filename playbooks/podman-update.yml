@@ -1,0 +1,6 @@
+- name: Auto update all images to latest version
+  hosts: all
+  tasks:
+    - name: Update arch to latest version
+      ansible.builtin.command:
+        cmd: podman auto-update

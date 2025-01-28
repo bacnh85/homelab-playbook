@@ -14,6 +14,9 @@ Volume=immich_model_cache.volume:/cache
 # Run this cmd: nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
 SecurityLabelDisable=true
 AddDevice=nvidia.com/gpu=all
+AddDevice=/dev/dri/card0
+AddDevice=/dev/dri/card1
+AddDevice=/dev/dri/renderD128
 
 [Service]
 Restart=on-failure
