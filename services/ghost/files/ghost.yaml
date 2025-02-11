@@ -1,0 +1,71 @@
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ghost-db-pv-claim
+  labels:
+    app: ghost
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ghost-data-pv-claim
+  labels:
+    app: ghost
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ghost
+spec:
+  containers:
+    - name: db
+      image: docker.io/mysql:8.0
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "xYo5ELI6DF4xMK"
+      volumeMounts:
+        - name: mysql-pv-storage
+          mountPath: /var/lib/mysql
+    - name: ghost
+      image: docker.io/ghost:5-alpine
+      env:
+        - name: database__client
+          value: "mysql"
+        - name: database__connection__host
+          value: "db"
+        - name: database__connection__user
+          value: "root"
+        - name: database__connection__password
+          value: "xYo5ELI6DF4xMK"
+        - name: database__connection__database
+          value: "ghost"
+        - name: url
+          value: "http://static.bacnh.com"
+        - name: NODE_ENV
+          value: "production"
+      ports:
+        - containerPort: 2368
+          hostPort: 8081
+      volumeMounts:
+        - name: ghost-pv-storage
+          mountPath: /var/lib/ghost/content
+  volumes:
+    - name: mysql-pv-storage
+      persistentVolumeClaim:
+        claimName: ghost-db-pv-claim
+    - name: ghost-pv-storage
+      persistentVolumeClaim:
+        claimName: ghost-data-pv-claim
