@@ -1,0 +1,10 @@
+
+[Unit]
+Description=Ghost Kube Container
+
+[Kube]
+Yaml=ghost.yaml
+# PublishPort=8081:2368
+
+[Install]
+WantedBy=default.target

@@ -53,9 +53,9 @@ spec:
         - name: database__connection__database
           value: "ghost"
         - name: url
-          value: "http://static.bacnh.com"
-        - name: NODE_ENV
-          value: "production"
+          value: "https://bacnh.com"
+        # - name: NODE_ENV
+        #   value: "production"
       ports:
         - containerPort: 2368
           hostPort: 8081
